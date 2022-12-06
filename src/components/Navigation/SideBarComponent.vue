@@ -8,7 +8,7 @@ const listaMenu = [
         items: [
             {
                 type: "single",
-                text: "Elemento singular",
+                text: "Elemento simple",
                 icon: "pe-7s-diamond",
                 route: "/",
                 childs: []
