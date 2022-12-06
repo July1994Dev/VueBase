@@ -4,7 +4,7 @@ import MenuItemComponent from './MenuItemComponent.vue';
 
 const listaMenu = [
     {
-        title: "Elemento Simple",
+        title: "Elemento singular",
         items: [
             {
                 type: "single",
