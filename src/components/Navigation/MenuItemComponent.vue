@@ -8,12 +8,11 @@ const props = defineProps({
 });
 
 const { type, text, route, icon } = props;
-console.log(props);
 </script>
 
 <template>
     <li class="">
-        <router-link :to="type == 'single' ? route : '#'">
+        <router-link :to="type == 'single' ? route : ''">
             <i :class="'metismenu-icon ' + icon"></i>{{ text }}
             <i v-if="type == 'multi'" class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
         </router-link>

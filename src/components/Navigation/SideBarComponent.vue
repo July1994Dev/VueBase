@@ -4,7 +4,7 @@ import MenuItemComponent from './MenuItemComponent.vue';
 
 const listaMenu = [
     {
-        title: "f,jgsfhkgjkshfgdsfg 1",
+        title: "Menu 1",
         items: [
             {
                 type: "single",
@@ -22,25 +22,25 @@ const listaMenu = [
                     {
                         type: "single",
                         text: "Menu 1",
-                        route: "/asdf",
+                        route: "/",
                         childs: []
                     },
                     {
                         type: "single",
                         text: "Menu 2",
-                        route: "/asdf",
+                        route: "/",
                         childs: []
                     },
                     {
                         type: "single",
                         text: "Menu 3",
-                        route: "/ola",
+                        route: "/",
                         childs: []
                     },
                     {
                         type: "single",
                         text: "Menu 4",
-                        route: "/asdf",
+                        route: "/",
                         childs: []
                     }
                 ]
@@ -66,32 +66,32 @@ const listaMenu = [
                     {
                         type: "single",
                         text: "Menu 1",
-                        route: "/asdf",
+                        route: "/",
                         childs: []
                     },
                     {
                         type: "single",
                         text: "Menu 2",
-                        route: "/asdf",
+                        route: "/",
                         childs: []
                     },
                     {
                         type: "single",
                         text: "Menu 3",
-                        route: "/ola",
+                        route: "/",
                         childs: []
                     },
                     {
                         type: "single",
                         text: "Menu 4",
-                        route: "/asdf",
+                        route: "/",
                         childs: []
                     }
                 ]
             }
         ]
     }
-]
+];
 </script>
 
 <template>
@@ -129,12 +129,6 @@ const listaMenu = [
         </div>
         <div class="scrollbar-sidebar">
             <div class="app-sidebar__inner">
-                <MenuSectionComponent :name="item.title" v-for="(item, index) in listaMenu" :key="index">
-                    <MenuItemComponent v-for="link in item.items" :type="link.type" :text="link.text" :icon="link.icon" :route="link.route" :key="link.text">
-                        <MenuItemComponent v-for="submenu in link.childs" :type="submenu.type" :text="submenu.text" :route="submenu.route" :key="submenu.text">
-                        </MenuItemComponent>
-                    </MenuItemComponent>
-                </MenuSectionComponent>
                 <MenuSectionComponent :name="item.title" v-for="(item, index) in listaMenu" :key="index">
                     <MenuItemComponent v-for="link in item.items" :type="link.type" :text="link.text" :icon="link.icon" :route="link.route" :key="link.text">
                         <MenuItemComponent v-for="submenu in link.childs" :type="submenu.type" :text="submenu.text" :route="submenu.route" :key="submenu.text">
