@@ -1,8 +1,14 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import ContentHeader from '../../components/Header/ContentHeader.vue';
 import UserComponent from '../User/UserComponent.vue';
+import { useModalStore } from '../../stores';
+import FormLoginComponent from '../Login/FormLoginComponent.vue';
 import { GetAll } from '../../services/account.js';
+import 'animate.css';
+
+const { showModal } = useModalStore();
+
 onMounted(() => {
     // GetAll().then(response =>{
     //     console.log(response);
@@ -11,9 +17,9 @@ onMounted(() => {
 </script>
 
 <template>
-    <ContentHeader>
+    <ContentHeader class="animate__animated animate__bounce animate__repeat-2">
         <template v-slot:Icon>
-            <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
+            <i class="pe-7s-car icon-gradient bg-mean-fruit" v-on:click="showModal(FormLoginComponent)"></i>
         </template>
         <template v-slot:Title>
             Usuarios

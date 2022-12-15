@@ -2,6 +2,12 @@
 import TopBarComponent from './components/Navigation/TopBarComponent.vue';
 import SideBarComponent from './components/Navigation/SideBarComponent.vue';
 import ContainerComponent from './components/Content/ContainerComponent.vue';
+import ModalComponent from './components/UI/Modal/ModalComponent.vue';
+import { useModalStore } from './stores';
+import { storeToRefs } from 'pinia';
+
+const { Show, Content } = storeToRefs(useModalStore());
+
 </script>
 
 <template>
@@ -1429,6 +1435,9 @@ import ContainerComponent from './components/Content/ContainerComponent.vue';
       </div>
     </div>
     <div class="app-drawer-overlay d-none animated fadeIn"></div>
+    <ModalComponent v-if="Show">
+      <Content></Content>
+    </ModalComponent>
   </div>
 </template>
 
