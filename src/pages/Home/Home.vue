@@ -5,6 +5,7 @@ import UserComponent from '../User/UserComponent.vue';
 import { useModalStore } from '../../stores';
 import FormLoginComponent from '../Login/FormLoginComponent.vue';
 import { GetAll } from '../../services/account.js';
+import { TabComponent } from '../../components/UI/Tab';
 import 'animate.css';
 
 const { showModal } = useModalStore();
@@ -17,6 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
+    <TabComponent></TabComponent>
     <ContentHeader class="animate__animated animate__bounce animate__repeat-2">
         <template v-slot:Icon>
             <i class="pe-7s-car icon-gradient bg-mean-fruit" v-on:click="showModal(FormLoginComponent)"></i>

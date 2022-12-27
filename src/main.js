@@ -4,8 +4,8 @@ import LoginComponent from "./pages/Login/LoginComponent.vue";
 import router from "./router";
 import { validateSession } from "./utils/Session";
 import { createPinia } from "pinia";
-const activeComponent = validateSession() ? App : LoginComponent;
 
+const activeComponent = validateSession() ? App : LoginComponent;
 const app = createApp(activeComponent);
 const pinia = createPinia();
 
