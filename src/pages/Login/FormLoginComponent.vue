@@ -3,8 +3,8 @@ import { Login } from '../../services/account';
 import { ref } from 'vue';
 
 const credentials = ref({
-    Usuario: "",
-    Password: ""
+    username: "",
+    password: ""
 });
 
 const SendLogin = () => {
