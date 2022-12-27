@@ -1,6 +1,7 @@
 <script setup>
 import { Login } from '../../services/account';
 import { ref } from 'vue';
+import { setCookie } from '../../utils/Session';
 
 const credentials = ref({
     username: "",
@@ -10,7 +11,10 @@ const credentials = ref({
 const SendLogin = () => {
     Login(JSON.stringify(credentials.value))
         .then(result => {
-            console.log(result);
+            let fecha = new Date(result.data.data.expires);
+            console.log(fecha);
+            setCookie("ST", result.data.data.accessToken, 1, fecha);
+            window.location.href = "/";
         });
 };
 </script>
@@ -28,13 +32,13 @@ const SendLogin = () => {
                 <div class="form-row">
                     <div class="col-md-12">
                         <div class="position-relative form-group">
-                            <input v-model="credentials.Usuario" placeholder="Email here..." type="email"
+                            <input v-model="credentials.username" placeholder="Email here..." type="email"
                                 class="form-control" />
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="position-relative form-group">
-                            <input v-model="credentials.Password" placeholder="Password here..." type="password"
+                            <input v-model="credentials.password" placeholder="Password here..." type="password"
                                 class="form-control" />
                         </div>
                     </div>

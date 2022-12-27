@@ -5,9 +5,13 @@ const getCookie = (name) => {
   }, "");
 };
 
-const setCookie = (name, value, days) => {
-  const d = new Date();
-  d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+const setCookie = (name, value, days, date = null) => {
+  let d = new Date();
+  if (date) {
+    d = new Date(date);
+  } else {
+    d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+  }
   let expires = "expires=" + d.toUTCString();
   document.cookie = name + "=" + value + ";" + expires + ";path=/";
 };
@@ -15,7 +19,7 @@ const setCookie = (name, value, days) => {
 const validateSession = () => {
   const tkn = getCookie("ST");
   const data = parseJwt(tkn);
-  return tkn ? true : false;
+  return data ? true : false;
 };
 
 const parseJwt = (token) => {
