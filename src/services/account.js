@@ -1,7 +1,7 @@
 import { axiosClient } from "./config";
 
 const Login = (data) =>{
-  return axiosClient.post(`InicioSesion/IniciarSesion`, data); 
+  return axiosClient.post(`InicioSesion/Login`, data); 
 }
 
 const GetAll = () => {
