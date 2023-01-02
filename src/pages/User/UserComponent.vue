@@ -1,6 +1,25 @@
 <script setup>
 import { CardComponent, CardHeaderComponent, CardBodyComponent, CardFooterComponent } from '../../components/UI/Card';
-import { TableComponent } from '../../components/UI/Table';
+import { AgGridVue } from "ag-grid-vue3";
+import { GetAll } from '../../services/account.js';
+import { ref, onMounted, reactive } from 'vue';
+import { defaultColDef, gridOptions } from '../../utils/TableConfig.js';
+const userData = reactive([]);
+const isLoaded = ref(false);
+
+const columnDefs = [
+    { headerName: "CLABE", field: "clabeInterbancaria" },
+    { headerName: "Código", field: "codigo" },
+    { headerName: "No. Cuenta", field: "numeroCuenta" }
+];
+
+onMounted(() => {
+    GetAll().then(response => {
+        isLoaded.value = true;
+        userData.value = response.data.data;
+    });
+});
+
 </script>
 
 <template>
@@ -17,7 +36,8 @@ import { TableComponent } from '../../components/UI/Table';
             <CardBodyComponent>
                 <div class="row p-3">
                     <div class="col">
-                        <TableComponent></TableComponent>
+                        <ag-grid-vue class="ag-theme-alpine" :rowData="userData.value" :columnDefs="columnDefs"
+                            :defaultColDef="defaultColDef" :gridOptions="gridOptions"></ag-grid-vue>
                     </div>
                 </div>
             </CardBodyComponent>

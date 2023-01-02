@@ -4,17 +4,10 @@ import ContentHeader from '../../components/Header/ContentHeader.vue';
 import UserComponent from '../User/UserComponent.vue';
 import { useModalStore } from '../../stores';
 import FormLoginComponent from '../Login/FormLoginComponent.vue';
-import { GetAll } from '../../services/account.js';
 import { TabComponent } from '../../components/UI/Tab';
 import 'animate.css';
 
 const { showModal } = useModalStore();
-
-onMounted(() => {
-    // GetAll().then(response =>{
-    //     console.log(response);
-    // });
-});
 </script>
 
 <template>
