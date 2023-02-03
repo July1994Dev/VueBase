@@ -4,90 +4,35 @@ import MenuItemComponent from './MenuItemComponent.vue';
 
 const listaMenu = [
     {
-        title: "Menu 1",
+        title: "Recursos Humanos",
         items: [
+            // {
+            //     type: "single",
+            //     text: "Elemento simple",
+            //     icon: "pe-7s-diamond",
+            //     route: "/",
+            //     childs: []
+            // },
             {
                 type: "single",
-                text: "Elemento simple",
-                icon: "pe-7s-diamond",
-                route: "/",
+                text: "Departamentos",
+                icon: "pe-7s-plugin",
+                route: "/Departamentos",
                 childs: []
             },
             {
-                type: "multi",
-                text: "Elemento multinivel",
-                icon: "pe-7s-diamond",
-                route: "/",
-                childs: [
-                    {
-                        type: "single",
-                        text: "Menu 1",
-                        route: "/",
-                        childs: []
-                    },
-                    {
-                        type: "single",
-                        text: "Menu 2",
-                        route: "/",
-                        childs: []
-                    },
-                    {
-                        type: "single",
-                        text: "Menu 3",
-                        route: "/",
-                        childs: []
-                    },
-                    {
-                        type: "single",
-                        text: "Menu 4",
-                        route: "/",
-                        childs: []
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        title: "Segundo elemento",
-        items: [
-            {
                 type: "single",
-                text: "Elemento singular",
+                text: "Puestos",
                 icon: "pe-7s-diamond",
-                route: "/",
+                route: "/Puestos",
                 childs: []
             },
             {
-                type: "multi",
-                text: "Elemento multinivel",
+                type: "single",
+                text: "Empleados",
                 icon: "pe-7s-diamond",
-                route: "/",
-                childs: [
-                    {
-                        type: "single",
-                        text: "Menu 1",
-                        route: "/",
-                        childs: []
-                    },
-                    {
-                        type: "single",
-                        text: "Menu 2",
-                        route: "/",
-                        childs: []
-                    },
-                    {
-                        type: "single",
-                        text: "Menu 3",
-                        route: "/",
-                        childs: []
-                    },
-                    {
-                        type: "single",
-                        text: "Menu 4",
-                        route: "/",
-                        childs: []
-                    }
-                ]
+                route: "/Empleados",
+                childs: []
             }
         ]
     }

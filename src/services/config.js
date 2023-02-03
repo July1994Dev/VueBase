@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiRoute = import.meta.env.VITE_API_ROUTE;
-console.log(apiRoute);
+
 const axiosClient = axios.create({
     baseURL: apiRoute,
     headers: {
