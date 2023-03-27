@@ -27,11 +27,17 @@ const routes = [
     path: '/Empleados',
     name: 'Empleados',
     component: () => import('../pages/RecursosHumanos/Empleados/Empleados.vue')
+  },
+  {
+    path: '/Ventas',
+    name: 'Ventas',
+    component: () => import('../pages/Ventas/Documentos/Ventas.vue')
   }
 ];
 // () => import('../pages/Home/Home.vue')
 const router = createRouter({
   history: createWebHistory(),
+  linkActiveClass:"mm-active",
   routes
 });
 

@@ -12,9 +12,12 @@ const { type, text, route, icon } = props;
 
 <template>
     <li class="">
-        <router-link :to="type == 'single' ? route : ''">
+        <a href="#" v-if="type == 'multi'">
             <i :class="'metismenu-icon ' + icon"></i>{{ text }}
-            <i v-if="type == 'multi'" class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+            <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+        </a>
+        <router-link v-else :to="route">
+            <i :class="'metismenu-icon ' + icon"></i>{{ text }}
         </router-link>
         <ul v-if="type == 'multi'" class="m-collapse">
             <slot></slot>

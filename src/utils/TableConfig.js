@@ -7,7 +7,7 @@ const defaultColDef = {
 };
 
 const gridOptions = {
-  domLayout: "autoHeight",
+  domLayout: "autoHeight"
 };
 
 export { defaultColDef, gridOptions };

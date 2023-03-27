@@ -1,10 +1,45 @@
+<script setup>
+import { ref } from 'vue';
+const isOpen = ref(false);
+const sidebarActive = ref(false);
+const collapsed = ref(true);
+const windowWidth = ref(0);
+
+
+const toggleBodyClass = (className) => {
+    const el = document.body;
+    isOpen.value = !isOpen.value;
+
+    if (isOpen.value) {
+        el.classList.add(className);
+    } else {
+        el.classList.remove(className);
+    }
+};
+
+const toggleSidebarHover = (add, className) => {
+    const el = document.body;
+    sidebarActive.value = !sidebarActive.value;
+
+    windowWidth.value = document.documentElement.clientWidth;
+
+    if (windowWidth.value > "992") {
+        if (add === "add") {
+            el.classList.add(className);
+        } else {
+            el.classList.remove(className);
+        }
+    }
+};
+
+</script>
 <template>
     <div class="app-header header-shadow">
         <div class="app-header__logo">
             <div class="logo-src"></div>
             <div class="header__pane ml-auto">
                 <div>
-                    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
+                    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" v-bind:class="{ 'is-active' : isOpen }" @click="toggleBodyClass('closed-sidebar')"
                         data-class="closed-sidebar">
                         <span class="hamburger-box">
                             <span class="hamburger-inner"></span>
@@ -77,8 +112,7 @@
                                                         </a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a disabled="" href="javascript:void(0);"
-                                                            class="nav-link disabled">
+                                                        <a disabled="" href="javascript:void(0);" class="nav-link disabled">
                                                             <i class="nav-link-icon lnr-file-empty"></i>
                                                             <span> Dashboards</span>
                                                         </a>
@@ -153,8 +187,8 @@
                             <div class="dropdown-menu-header">
                                 <div class="dropdown-menu-header-inner bg-secondary">
                                     <div class="menu-header-image opacity-5" style="
-                          background-image: url('assets/images/dropdown-header/abstract2.jpg');
-                        "></div>
+                              background-image: url('assets/images/dropdown-header/abstract2.jpg');
+                            "></div>
                                     <div class="menu-header-content">
                                         <h5 class="menu-header-title">Overview</h5>
                                         <h6 class="menu-header-subtitle">
@@ -204,8 +238,8 @@
                             <div class="dropdown-menu-header">
                                 <div class="dropdown-menu-header-inner bg-success">
                                     <div class="menu-header-image opacity-1" style="
-                          background-image: url('assets/images/dropdown-header/abstract3.jpg');
-                        "></div>
+                              background-image: url('assets/images/dropdown-header/abstract3.jpg');
+                            "></div>
                                     <div class="menu-header-content text-left">
                                         <h5 class="menu-header-title">Overview</h5>
                                         <h6 class="menu-header-subtitle">Unlimited options</h6>
@@ -255,8 +289,8 @@
                             <div class="dropdown-menu-header">
                                 <div class="dropdown-menu-header-inner bg-plum-plate">
                                     <div class="menu-header-image" style="
-                          background-image: url('assets/images/dropdown-header/abstract4.jpg');
-                        "></div>
+                              background-image: url('assets/images/dropdown-header/abstract4.jpg');
+                            "></div>
                                     <div class="menu-header-content text-white">
                                         <h5 class="menu-header-title">Grid Dashboard</h5>
                                         <h6 class="menu-header-subtitle">
@@ -268,16 +302,14 @@
                             <div class="grid-menu grid-menu-xl grid-menu-3col">
                                 <div class="no-gutters row">
                                     <div class="col-sm-6 col-xl-4">
-                                        <button
-                                            class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+                                        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
                                             <i
                                                 class="pe-7s-world icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3"></i>
                                             Automation
                                         </button>
                                     </div>
                                     <div class="col-sm-6 col-xl-4">
-                                        <button
-                                            class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+                                        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
                                             <i
                                                 class="pe-7s-piggy icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3">
                                             </i>
@@ -285,8 +317,7 @@
                                         </button>
                                     </div>
                                     <div class="col-sm-6 col-xl-4">
-                                        <button
-                                            class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+                                        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
                                             <i
                                                 class="pe-7s-config icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3">
                                             </i>
@@ -294,8 +325,7 @@
                                         </button>
                                     </div>
                                     <div class="col-sm-6 col-xl-4">
-                                        <button
-                                            class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+                                        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
                                             <i
                                                 class="pe-7s-browser icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3">
                                             </i>
@@ -303,16 +333,14 @@
                                         </button>
                                     </div>
                                     <div class="col-sm-6 col-xl-4">
-                                        <button
-                                            class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+                                        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
                                             <i
                                                 class="pe-7s-hourglass icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3"></i>
                                             Activity
                                         </button>
                                     </div>
                                     <div class="col-sm-6 col-xl-4">
-                                        <button
-                                            class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+                                        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
                                             <i
                                                 class="pe-7s-world icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3">
                                             </i>
@@ -345,8 +373,8 @@
                             <div class="dropdown-menu-header mb-0">
                                 <div class="dropdown-menu-header-inner bg-deep-blue">
                                     <div class="menu-header-image opacity-1" style="
-                          background-image: url('assets/images/dropdown-header/city3.jpg');
-                        "></div>
+                              background-image: url('assets/images/dropdown-header/city3.jpg');
+                            "></div>
                                     <div class="menu-header-content text-dark">
                                         <h5 class="menu-header-title">Notifications</h5>
                                         <h6 class="menu-header-subtitle">
@@ -385,8 +413,7 @@
                                                             <div>
                                                                 <span
                                                                     class="vertical-timeline-element-icon bounce-in"></span>
-                                                                <div
-                                                                    class="vertical-timeline-element-content bounce-in">
+                                                                <div class="vertical-timeline-element-content bounce-in">
                                                                     <h4 class="timeline-title">
                                                                         All Hands Meeting
                                                                     </h4>
@@ -399,8 +426,7 @@
                                                             <div>
                                                                 <span
                                                                     class="vertical-timeline-element-icon bounce-in"></span>
-                                                                <div
-                                                                    class="vertical-timeline-element-content bounce-in">
+                                                                <div class="vertical-timeline-element-content bounce-in">
                                                                     <p>
                                                                         Yet another one, at
                                                                         <span class="text-success">15:00 PM</span>
@@ -414,8 +440,7 @@
                                                             <div>
                                                                 <span
                                                                     class="vertical-timeline-element-icon bounce-in"></span>
-                                                                <div
-                                                                    class="vertical-timeline-element-content bounce-in">
+                                                                <div class="vertical-timeline-element-content bounce-in">
                                                                     <h4 class="timeline-title">
                                                                         Build the production release
                                                                         <span class="badge badge-danger ml-2">NEW</span>
@@ -429,63 +454,54 @@
                                                             <div>
                                                                 <span
                                                                     class="vertical-timeline-element-icon bounce-in"></span>
-                                                                <div
-                                                                    class="vertical-timeline-element-content bounce-in">
+                                                                <div class="vertical-timeline-element-content bounce-in">
                                                                     <h4 class="timeline-title">
                                                                         Something not important
                                                                         <div
                                                                             class="avatar-wrapper mt-2 avatar-wrapper-overlap">
-                                                                            <div
-                                                                                class="avatar-icon-wrapper avatar-icon-sm">
+                                                                            <div class="avatar-icon-wrapper avatar-icon-sm">
                                                                                 <div class="avatar-icon">
                                                                                     <img src="../../assets/images/avatars/1.jpg"
                                                                                         alt="" />
                                                                                 </div>
                                                                             </div>
-                                                                            <div
-                                                                                class="avatar-icon-wrapper avatar-icon-sm">
+                                                                            <div class="avatar-icon-wrapper avatar-icon-sm">
                                                                                 <div class="avatar-icon">
                                                                                     <img src="../../assets/images/avatars/2.jpg"
                                                                                         alt="" />
                                                                                 </div>
                                                                             </div>
-                                                                            <div
-                                                                                class="avatar-icon-wrapper avatar-icon-sm">
+                                                                            <div class="avatar-icon-wrapper avatar-icon-sm">
                                                                                 <div class="avatar-icon">
                                                                                     <img src="../../assets/images/avatars/3.jpg"
                                                                                         alt="" />
                                                                                 </div>
                                                                             </div>
-                                                                            <div
-                                                                                class="avatar-icon-wrapper avatar-icon-sm">
+                                                                            <div class="avatar-icon-wrapper avatar-icon-sm">
                                                                                 <div class="avatar-icon">
                                                                                     <img src="../../assets/images/avatars/4.jpg"
                                                                                         alt="" />
                                                                                 </div>
                                                                             </div>
-                                                                            <div
-                                                                                class="avatar-icon-wrapper avatar-icon-sm">
+                                                                            <div class="avatar-icon-wrapper avatar-icon-sm">
                                                                                 <div class="avatar-icon">
                                                                                     <img src="../../assets/images/avatars/5.jpg"
                                                                                         alt="" />
                                                                                 </div>
                                                                             </div>
-                                                                            <div
-                                                                                class="avatar-icon-wrapper avatar-icon-sm">
+                                                                            <div class="avatar-icon-wrapper avatar-icon-sm">
                                                                                 <div class="avatar-icon">
                                                                                     <img src="../../assets/images/avatars/9.jpg"
                                                                                         alt="" />
                                                                                 </div>
                                                                             </div>
-                                                                            <div
-                                                                                class="avatar-icon-wrapper avatar-icon-sm">
+                                                                            <div class="avatar-icon-wrapper avatar-icon-sm">
                                                                                 <div class="avatar-icon">
                                                                                     <img src="../../assets/images/avatars/7.jpg"
                                                                                         alt="" />
                                                                                 </div>
                                                                             </div>
-                                                                            <div
-                                                                                class="avatar-icon-wrapper avatar-icon-sm">
+                                                                            <div class="avatar-icon-wrapper avatar-icon-sm">
                                                                                 <div class="avatar-icon">
                                                                                     <img src="../../assets/images/avatars/8.jpg"
                                                                                         alt="" />
@@ -508,8 +524,7 @@
                                                             <div>
                                                                 <span
                                                                     class="vertical-timeline-element-icon bounce-in"></span>
-                                                                <div
-                                                                    class="vertical-timeline-element-content bounce-in">
+                                                                <div class="vertical-timeline-element-content bounce-in">
                                                                     <h4 class="timeline-title">
                                                                         This dot has an info state
                                                                     </h4>
@@ -522,8 +537,7 @@
                                                             <div>
                                                                 <span
                                                                     class="vertical-timeline-element-icon bounce-in"></span>
-                                                                <div
-                                                                    class="vertical-timeline-element-content bounce-in">
+                                                                <div class="vertical-timeline-element-content bounce-in">
                                                                     <h4 class="timeline-title">
                                                                         All Hands Meeting
                                                                     </h4>
@@ -536,8 +550,7 @@
                                                             <div>
                                                                 <span
                                                                     class="vertical-timeline-element-icon bounce-in"></span>
-                                                                <div
-                                                                    class="vertical-timeline-element-content bounce-in">
+                                                                <div class="vertical-timeline-element-content bounce-in">
                                                                     <p>
                                                                         Yet another one, at
                                                                         <span class="text-success">15:00 PM</span>
@@ -551,8 +564,7 @@
                                                             <div>
                                                                 <span
                                                                     class="vertical-timeline-element-icon bounce-in"></span>
-                                                                <div
-                                                                    class="vertical-timeline-element-content bounce-in">
+                                                                <div class="vertical-timeline-element-content bounce-in">
                                                                     <h4 class="timeline-title">
                                                                         Build the production release
                                                                         <span class="badge badge-danger ml-2">NEW</span>
@@ -566,8 +578,7 @@
                                                             <div>
                                                                 <span
                                                                     class="vertical-timeline-element-icon bounce-in"></span>
-                                                                <div
-                                                                    class="vertical-timeline-element-content bounce-in">
+                                                                <div class="vertical-timeline-element-content bounce-in">
                                                                     <h4 class="timeline-title">
                                                                         This dot has a dark state
                                                                     </h4>
@@ -788,8 +799,8 @@
                             <div class="dropdown-menu-header">
                                 <div class="dropdown-menu-header-inner pt-4 pb-4 bg-focus">
                                     <div class="menu-header-image opacity-05" style="
-                          background-image: url('assets/images/dropdown-header/city2.jpg');
-                        "></div>
+                              background-image: url('assets/images/dropdown-header/city2.jpg');
+                            "></div>
                                     <div class="menu-header-content text-center text-white">
                                         <h6 class="menu-header-subtitle mt-0">
                                             Choose Language
@@ -836,8 +847,8 @@
                             <div class="dropdown-menu-header">
                                 <div class="dropdown-menu-header-inner bg-premium-dark">
                                     <div class="menu-header-image" style="
-                          background-image: url('assets/images/dropdown-header/abstract4.jpg');
-                        "></div>
+                              background-image: url('assets/images/dropdown-header/abstract4.jpg');
+                            "></div>
                                     <div class="menu-header-content text-white">
                                         <h5 class="menu-header-title">Users Online</h5>
                                         <h6 class="menu-header-subtitle">
@@ -883,8 +894,7 @@
                         <div class="widget-content-wrapper">
                             <div class="widget-content-left">
                                 <div class="btn-group">
-                                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                        class="p-0 btn">
+                                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
                                         <img width="42" class="rounded-circle" src="../../assets/images/avatars/1.jpg"
                                             alt="" />
                                         <i class="fa fa-angle-down ml-2 opacity-8"></i>
@@ -894,8 +904,8 @@
                                         <div class="dropdown-menu-header">
                                             <div class="dropdown-menu-header-inner bg-info">
                                                 <div class="menu-header-image opacity-2" style="
-                                background-image: url('assets/images/dropdown-header/city3.jpg');
-                              "></div>
+                                    background-image: url('assets/images/dropdown-header/city3.jpg');
+                                  "></div>
                                                 <div class="menu-header-content text-left">
                                                     <div class="widget-content p-0">
                                                         <div class="widget-content-wrapper">
@@ -912,8 +922,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="widget-content-right mr-2">
-                                                                <button
-                                                                    class="btn-pill btn-shadow btn-shine btn btn-focus">
+                                                                <button class="btn-pill btn-shadow btn-shine btn btn-focus">
                                                                     Logout
                                                                 </button>
                                                             </div>
@@ -1018,6 +1027,4 @@
     </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

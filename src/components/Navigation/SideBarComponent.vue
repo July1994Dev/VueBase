@@ -1,6 +1,7 @@
 <script setup>
 import MenuSectionComponent from './MenuSectionComponent.vue';
 import MenuItemComponent from './MenuItemComponent.vue';
+import { ref } from 'vue';
 
 const listaMenu = [
     {
@@ -35,8 +36,77 @@ const listaMenu = [
                 childs: []
             }
         ]
+    },
+    {
+        title: "Ventas",
+        items: [
+            {
+                type: "multi",
+                text: "Documentos",
+                icon: "pe-7s-plugin",
+                childs: [
+                    {
+                        type: "single",
+                        text: "Ventas",
+                        icon: "pe-7s-plugin",
+                        route: "/Ventas",
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        title: "Compras",
+        items: [
+            {
+                type: "multi",
+                text: "Documentos",
+                icon: "pe-7s-plugin",
+                childs: [
+                    {
+                        type: "single",
+                        text: "Cotizaciones",
+                        icon: "pe-7s-plugin",
+                        route: "/",
+                    }
+                ]
+            }
+        ]
     }
 ];
+
+const isOpen = ref(false);
+const sidebarActive = ref(false);
+const collapsed = ref(true);
+const windowWidth = ref(0);
+
+
+const toggleBodyClass = (className) => {
+    const el = document.body;
+    isOpen.value = !isOpen.value;
+
+    if (isOpen.value) {
+        el.classList.add(className);
+    } else {
+        el.classList.remove(className);
+    }
+};
+
+const toggleSidebarHover = (add, className) => {
+    const el = document.body;
+    sidebarActive.value = !sidebarActive.value;
+
+    windowWidth.value = document.documentElement.clientWidth;
+
+    if (windowWidth.value > "992") {
+        if (add === "add") {
+            el.classList.add(className);
+        } else {
+            el.classList.remove(className);
+        }
+    }
+};
+
 </script>
 
 <template>
@@ -45,8 +115,8 @@ const listaMenu = [
             <div class="logo-src"></div>
             <div class="header__pane ml-auto">
                 <div>
-                    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
-                        data-class="closed-sidebar">
+                    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar"
+                        v-bind:class="{ 'is-active': isOpen }" @click="toggleBodyClass('closed-sidebar')">
                         <span class="hamburger-box">
                             <span class="hamburger-inner"></span>
                         </span>
@@ -75,8 +145,10 @@ const listaMenu = [
         <div class="scrollbar-sidebar">
             <div class="app-sidebar__inner">
                 <MenuSectionComponent :name="item.title" v-for="(item, index) in listaMenu" :key="index">
-                    <MenuItemComponent v-for="link in item.items" :type="link.type" :text="link.text" :icon="link.icon" :route="link.route" :key="link.text">
-                        <MenuItemComponent v-for="submenu in link.childs" :type="submenu.type" :text="submenu.text" :route="submenu.route" :key="submenu.text">
+                    <MenuItemComponent v-for="link in item.items" :type="link.type" :text="link.text" :icon="link.icon"
+                        :route="link.type == 'single' ? link.route : ''" :key="link.text">
+                        <MenuItemComponent v-for="submenu in link.childs" :type="submenu.type" :text="submenu.text"
+                            :route="submenu.route" :key="submenu.text">
                         </MenuItemComponent>
                     </MenuItemComponent>
                 </MenuSectionComponent>
@@ -85,6 +157,4 @@ const listaMenu = [
     </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
