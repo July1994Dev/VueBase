@@ -18,7 +18,7 @@ const emptyProduct = {
   inventarioMaximo: 0,
   claveProductoServicio: "",
   claveUnidadMedida: "",
-  idTipoProductoServicio: 8,
+  idTipoProductoServicio: 28,
   idEstatus: 0,
   idSesion: 0,
 };

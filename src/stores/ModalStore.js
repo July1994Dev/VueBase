@@ -20,8 +20,7 @@ const useModalStore = defineStore({
     },
     closeModal() {
       this.Show = false;
-      JQJuly.exec("#ModalComponent").modal();
-      JQJuly.exec("#ModalComponent").modal('dispose');
+      JQJuly.exec("#ModalComponent").modal('hide');
 
     },
   },

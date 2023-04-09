@@ -65,7 +65,7 @@ export default {
             <i class="pe-7s-cash icon-gradient bg-mean-fruit"></i>
         </template>
         <template v-slot:Title>
-            <div v-on:click="EditItem">Productos aki</div>
+            <div v-on:click="EditItem">Productos</div>
         </template>
         <template v-slot:Description>
             En este modulo se pueden visualizar todos los productos registrados en la plataforma.

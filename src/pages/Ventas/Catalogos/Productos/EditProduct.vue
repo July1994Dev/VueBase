@@ -1,14 +1,22 @@
 <script setup>
-import { useProductsStore } from '../../../../stores';
+import { useProductsStore, useModalStore } from '../../../../stores';
 import { storeToRefs } from 'pinia';
 import { emptyProduct } from '../../../../models/products';
+import { CatalogoEstatus, CatalogoImpuestos, CatalogoUnidadMedida, CatalogoMetodoCosteo, CatalogoCategoriaProducto, CatalogoLineaNegocio } from '../../../../models/catalogs';
 
 const { ActiveProduct, IsEdit } = storeToRefs(useProductsStore());
+const { Create, Update } = useProductsStore();
+const { closeModal } = useModalStore();
 
-if(!IsEdit){
-    ActiveProduct.value = emptyProduct;
-}
-
+const GuardarCambios = async () => {
+    if (ActiveProduct.value.idProducto > 0) {
+        await Update(ActiveProduct);
+    } else {
+        await Create(ActiveProduct);
+    }
+    console.log("aca c cierra el modal :c");
+    closeModal();
+};
 </script>
 
 <template>
@@ -80,38 +88,41 @@ if(!IsEdit){
                 <div class="col-lg-3 col-md-6 col-12">
                     <label>Unidad de medida</label>
                     <select v-model="ActiveProduct.idUnidadMedida" class="form-control">
+                        <option :value="o.IdProductoUnidadMedida" v-for="o in CatalogoUnidadMedida">{{ o.Descripcion }}
+                        </option>
                     </select>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
                     <label>Metodo de costeo</label>
                     <select v-model="ActiveProduct.idMetodoCosteo" class="form-control">
+                        <option :value="o.IdTipoDetalle" v-for="o in CatalogoMetodoCosteo">{{ o.Descripcion }}</option>
                     </select>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
                     <label>Impuesto</label>
                     <select v-model="ActiveProduct.idImpuesto" class="form-control">
+                        <option :value="o.IdImpuesto" v-for="o in CatalogoImpuestos">{{ o.Descripcion }}</option>
                     </select>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
                     <label>Categoria</label>
                     <select v-model="ActiveProduct.idCategoria" class="form-control">
+                        <option :value="o.IdListaDetalle" v-for="o in CatalogoCategoriaProducto">{{ o.Descripcion }}
+                        </option>
                     </select>
                 </div>
             </div>
             <div class="row mt-0 mt-md-3">
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-md-6 col-12">
                     <label>Linea de negocio</label>
                     <select v-model="ActiveProduct.idLineaNegocio" class="form-control">
+                        <option :value="o.IdListaDetalle" v-for="o in CatalogoLineaNegocio">{{ o.Descripcion }}</option>
                     </select>
                 </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <label>Tipo</label>
-                    <select v-model="ActiveProduct.idTipoProductoServicio" class="form-control">
-                    </select>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-md-6 col-12">
                     <label>Estatus</label>
                     <select v-model="ActiveProduct.idEstatus" class="form-control">
+                        <option :value="o.IdEstatus" v-for="o in CatalogoEstatus">{{ o.Descripcion }}</option>
                     </select>
                 </div>
             </div>
@@ -119,7 +130,7 @@ if(!IsEdit){
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Guardar producto</button>
+        <button type="button" class="btn btn-primary" @click="GuardarCambios">Guardar producto</button>
     </div>
 </template>
 

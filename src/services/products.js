@@ -9,7 +9,7 @@ const GetProduct = (id) => {
 };
 
 const UpdateProduct = (data) => {
-  return axiosClient.post(`Producto/Update`, data);
+  return axiosClient.put(`Producto/Update`, data);
 };
 
 const CreateProduct = (data) => {

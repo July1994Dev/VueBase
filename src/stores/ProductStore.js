@@ -1,5 +1,10 @@
 import { defineStore } from "pinia";
-import { GetProduct, GetAllProducts, CreateProduct, UpdateProduct  } from "../services/products.js";
+import {
+  GetProduct,
+  GetAllProducts,
+  CreateProduct,
+  UpdateProduct,
+} from "../services/products.js";
 import { FormatDate } from "../utils/FormatStrings.js";
 
 const useProductsStore = defineStore({
@@ -8,35 +13,40 @@ const useProductsStore = defineStore({
     Products: {
       ActivePage: 1,
       ItemsPerPage: 10,
-      Results: []
+      Results: [],
     },
-    ActiveProduct: {
-      
-    },
-    IsEdit: false
-    
+    ActiveProduct: {},
+    IsEdit: false,
   }),
   actions: {
     async GetAllProducts() {
-        GetAllProducts()
+      GetAllProducts()
         .then((result) => {
-          this.Products.Results = result.data.data.map(x=>{
+          this.Products.Results = result.data.data.map((x) => {
             return {
-              ...x
-            }
+              ...x,
+            };
           });
-        }).catch((error) => {
-
-        });
+        })
+        .catch((error) => {});
     },
     async GetProduct(id) {
       GetProduct(id)
-      .then((result) => {
-        this.ActiveProduct = result.data.data;
-      }).catch((error) => {
-
-      });
-  }
+        .then((result) => {
+          this.ActiveProduct = result.data.data;
+        })
+        .catch((error) => {});
+    },
+    async Create(item){
+      CreateProduct(item).then((result)=>{
+        console.log(result);
+      }).catch((error) => {});;
+    },
+    async Update(item){
+      UpdateProduct(item).then((result)=>{
+        console.log(result);
+      }).catch((error) => {});;
+    }
   },
 });
 
