@@ -18,7 +18,7 @@ export default {
     setup(props) {
         const { GetAllSales } = useSalesStore();
         const { Sales } = storeToRefs(useSalesStore());
- 
+        const prueba = ref("");
         const columnDefs = [
             { headerName: "Folio", field: "folio" },
             { headerName: "Fecha", field: "fechaCorrecta" },
@@ -37,7 +37,7 @@ export default {
         });
 
         return {
-            Sales, columnDefs, defaultColDef, gridOptions
+            Sales, columnDefs, defaultColDef, gridOptions,  prueba
         };
     },
 }

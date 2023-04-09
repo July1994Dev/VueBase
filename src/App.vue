@@ -5,7 +5,7 @@ import ContainerComponent from './components/Content/ContainerComponent.vue';
 import ModalComponent from './components/UI/Modal/ModalComponent.vue';
 import { useModalStore } from './stores';
 import { storeToRefs } from 'pinia';
-
+import EditProduct from './pages/Ventas/Catalogos/Productos/EditProduct.vue';
 const { Show, Content } = storeToRefs(useModalStore());
 
 </script>
@@ -86,8 +86,7 @@ const { Show, Content } = storeToRefs(useModalStore());
               <h3 class="themeoptions-heading">
                 <div>Header Options</div>
                 <button type="button"
-                  class="btn-pill btn-shadow btn-wide ml-auto btn btn-focus btn-sm switch-header-cs-class"
-                  data-class="">
+                  class="btn-pill btn-shadow btn-wide ml-auto btn btn-focus btn-sm switch-header-cs-class" data-class="">
                   Restore Default
                 </button>
               </h3>
@@ -112,8 +111,8 @@ const { Show, Content } = storeToRefs(useModalStore());
                       </div>
                       <div class="swatch-holder bg-dark switch-header-cs-class" data-class="bg-dark header-text-light">
                       </div>
-                      <div class="swatch-holder bg-focus switch-header-cs-class"
-                        data-class="bg-focus header-text-light"></div>
+                      <div class="swatch-holder bg-focus switch-header-cs-class" data-class="bg-focus header-text-light">
+                      </div>
                       <div class="swatch-holder bg-alternate switch-header-cs-class"
                         data-class="bg-alternate header-text-light"></div>
                       <div class="divider"></div>
@@ -127,8 +126,8 @@ const { Show, Content } = storeToRefs(useModalStore());
                         data-class="bg-slick-carbon header-text-light"></div>
                       <div class="swatch-holder bg-asteroid switch-header-cs-class"
                         data-class="bg-asteroid header-text-light"></div>
-                      <div class="swatch-holder bg-royal switch-header-cs-class"
-                        data-class="bg-royal header-text-light"></div>
+                      <div class="swatch-holder bg-royal switch-header-cs-class" data-class="bg-royal header-text-light">
+                      </div>
                       <div class="swatch-holder bg-warm-flame switch-header-cs-class"
                         data-class="bg-warm-flame header-text-dark"></div>
                       <div class="swatch-holder bg-night-fade switch-header-cs-class"
@@ -176,8 +175,7 @@ const { Show, Content } = storeToRefs(useModalStore());
               <h3 class="themeoptions-heading">
                 <div>Sidebar Options</div>
                 <button type="button"
-                  class="btn-pill btn-shadow btn-wide ml-auto btn btn-focus btn-sm switch-sidebar-cs-class"
-                  data-class="">
+                  class="btn-pill btn-shadow btn-wide ml-auto btn btn-focus btn-sm switch-sidebar-cs-class" data-class="">
                   Restore Default
                 </button>
               </h3>
@@ -198,10 +196,10 @@ const { Show, Content } = storeToRefs(useModalStore());
                         data-class="bg-warning sidebar-text-dark"></div>
                       <div class="swatch-holder bg-danger switch-sidebar-cs-class"
                         data-class="bg-danger sidebar-text-light"></div>
-                      <div class="swatch-holder bg-light switch-sidebar-cs-class"
-                        data-class="bg-light sidebar-text-dark"></div>
-                      <div class="swatch-holder bg-dark switch-sidebar-cs-class"
-                        data-class="bg-dark sidebar-text-light"></div>
+                      <div class="swatch-holder bg-light switch-sidebar-cs-class" data-class="bg-light sidebar-text-dark">
+                      </div>
+                      <div class="swatch-holder bg-dark switch-sidebar-cs-class" data-class="bg-dark sidebar-text-light">
+                      </div>
                       <div class="swatch-holder bg-focus switch-sidebar-cs-class"
                         data-class="bg-focus sidebar-text-light"></div>
                       <div class="swatch-holder bg-alternate switch-sidebar-cs-class"
@@ -275,8 +273,7 @@ const { Show, Content } = storeToRefs(useModalStore());
                     <h5 class="pb-2">Page Section Tabs</h5>
                     <div class="theme-settings-swatches">
                       <div role="group" class="mt-2 btn-group">
-                        <button type="button"
-                          class="btn-wide btn-shadow btn-primary btn btn-secondary switch-theme-class"
+                        <button type="button" class="btn-wide btn-shadow btn-primary btn btn-secondary switch-theme-class"
                           data-class="body-tabs-line">
                           Line
                         </button>
@@ -297,8 +294,7 @@ const { Show, Content } = storeToRefs(useModalStore());
                           data-class="app-theme-white">
                           White Theme
                         </button>
-                        <button type="button"
-                          class="btn-wide btn-shadow btn-primary btn btn-secondary switch-theme-class"
+                        <button type="button" class="btn-wide btn-shadow btn-primary btn btn-secondary switch-theme-class"
                           data-class="app-theme-gray">
                           Gray Theme
                         </button>
@@ -331,9 +327,7 @@ const { Show, Content } = storeToRefs(useModalStore());
                         class="dropdown-menu-xl rm-pointers dropdown-menu">
                         <div class="dropdown-menu-header mb-0">
                           <div class="dropdown-menu-header-inner bg-deep-blue">
-                            <div class="menu-header-image opacity-1" style="
-                                background-image: url('assets/images/dropdown-header/city3.jpg');
-                              "></div>
+                            <div class="menu-header-image opacity-1" style="background-image: url('assets/images/dropdown-header/city3.jpg');"></div>
                             <div class="menu-header-content text-dark">
                               <h5 class="menu-header-title">Notifications</h5>
                               <h6 class="menu-header-subtitle">
@@ -686,17 +680,17 @@ const { Show, Content } = storeToRefs(useModalStore());
                                 <div class="no-results pt-3 pb-0">
                                   <div class="swal2-icon swal2-success swal2-animate-success-icon">
                                     <div class="swal2-success-circular-line-left" style="
-                                        background-color: rgb(255, 255, 255);
-                                      "></div>
+                                          background-color: rgb(255, 255, 255);
+                                        "></div>
                                     <span class="swal2-success-line-tip"></span>
                                     <span class="swal2-success-line-long"></span>
                                     <div class="swal2-success-ring"></div>
                                     <div class="swal2-success-fix" style="
-                                        background-color: rgb(255, 255, 255);
-                                      "></div>
+                                          background-color: rgb(255, 255, 255);
+                                        "></div>
                                     <div class="swal2-success-circular-line-right" style="
-                                        background-color: rgb(255, 255, 255);
-                                      "></div>
+                                          background-color: rgb(255, 255, 255);
+                                        "></div>
                                   </div>
                                   <div class="results-subtitle">
                                     All caught up!
@@ -728,8 +722,8 @@ const { Show, Content } = storeToRefs(useModalStore());
                         <div class="dropdown-menu-header">
                           <div class="dropdown-menu-header-inner pt-4 pb-4 bg-focus">
                             <div class="menu-header-image opacity-05" style="
-                                background-image: url('assets/images/dropdown-header/city2.jpg');
-                              "></div>
+                                  background-image: url('assets/images/dropdown-header/city2.jpg');
+                                "></div>
                             <div class="menu-header-content text-center text-white">
                               <h6 class="menu-header-subtitle mt-0">
                                 Choose Language
@@ -778,8 +772,8 @@ const { Show, Content } = storeToRefs(useModalStore());
                         <div class="dropdown-menu-header">
                           <div class="dropdown-menu-header-inner bg-premium-dark">
                             <div class="menu-header-image" style="
-                                background-image: url('assets/images/dropdown-header/abstract4.jpg');
-                              "></div>
+                                  background-image: url('assets/images/dropdown-header/abstract4.jpg');
+                                "></div>
                             <div class="menu-header-content text-white">
                               <h5 class="menu-header-title">Users Online</h5>
                               <h6 class="menu-header-subtitle">
@@ -912,8 +906,8 @@ const { Show, Content } = storeToRefs(useModalStore());
                           <div class="dropdown-menu-header">
                             <div class="dropdown-menu-header-inner bg-tempting-azure">
                               <div class="menu-header-image opacity-1" style="
-                                  background-image: url('assets/images/dropdown-header/city5.jpg');
-                                "></div>
+                                    background-image: url('assets/images/dropdown-header/city5.jpg');
+                                  "></div>
                               <div class="menu-header-content text-dark">
                                 <h5 class="menu-header-title">
                                   Two Column Grid
@@ -1435,12 +1429,12 @@ const { Show, Content } = storeToRefs(useModalStore());
       </div>
     </div>
     <div class="app-drawer-overlay d-none animated fadeIn"></div>
-    <ModalComponent v-if="Show">
-      <Content></Content>
+    <ModalComponent>
+      <template v-slot:body v-if="Content">
+        <Content></Content>
+      </template>
     </ModalComponent>
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

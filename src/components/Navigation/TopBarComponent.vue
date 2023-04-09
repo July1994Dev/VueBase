@@ -7,7 +7,7 @@ const windowWidth = ref(0);
 
 
 const toggleBodyClass = (className) => {
-    const el = document.body;
+    const el = document.getElementsByClassName("app-container")[0];
     isOpen.value = !isOpen.value;
 
     if (isOpen.value) {
@@ -18,7 +18,7 @@ const toggleBodyClass = (className) => {
 };
 
 const toggleSidebarHover = (add, className) => {
-    const el = document.body;
+    const el = document.getElementsByClassName("app-container");
     sidebarActive.value = !sidebarActive.value;
 
     windowWidth.value = document.documentElement.clientWidth;
@@ -50,7 +50,7 @@ const toggleSidebarHover = (add, className) => {
         </div>
         <div class="app-header__mobile-menu">
             <div>
-                <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav" v-bind:class="{ 'is-active' : isOpen }" @click="toggleBodyClass('sidebar-mobile-open')">
                     <span class="hamburger-box">
                         <span class="hamburger-inner"></span>
                     </span>

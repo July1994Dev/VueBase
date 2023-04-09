@@ -52,6 +52,19 @@ const listaMenu = [
                         route: "/Ventas",
                     }
                 ]
+            },
+            {
+                type: "multi",
+                text: "Catalogos",
+                icon: "pe-7s-plugin",
+                childs: [
+                    {
+                        type: "single",
+                        text: "Productos",
+                        icon: "pe-7s-plugin",
+                        route: "/Ventas/Catalogos/Productos",
+                    }
+                ]
             }
         ]
     },
@@ -82,7 +95,8 @@ const windowWidth = ref(0);
 
 
 const toggleBodyClass = (className) => {
-    const el = document.body;
+    const el = document.getElementsByClassName("app-container");
+    console.log(el);
     isOpen.value = !isOpen.value;
 
     if (isOpen.value) {
@@ -93,7 +107,9 @@ const toggleBodyClass = (className) => {
 };
 
 const toggleSidebarHover = (add, className) => {
-    const el = document.body;
+    const el = document.getElementsByClassName("app-container");
+    console.log(el);
+
     sidebarActive.value = !sidebarActive.value;
 
     windowWidth.value = document.documentElement.clientWidth;

@@ -1,17 +1,29 @@
 import { defineStore } from "pinia";
-
+import { markRaw } from "vue";
+import {JQJuly} from '../utils/ExternalVariables.js';
 const useModalStore = defineStore({
   id: "modal",
   state: () => ({
     Show: false,
-    Content: null
+    Content: null,
+    HasHeader:true,
+    HasFooter: true
   }),
   actions: {
     showModal(component) {
       this.Content = component;
       this.Show = true;
+      JQJuly.exec("#ModalComponent").modal({
+        backdrop: 'static',
+      });
+
     },
-    closeModal() {},
+    closeModal() {
+      this.Show = false;
+      JQJuly.exec("#ModalComponent").modal();
+      JQJuly.exec("#ModalComponent").modal('dispose');
+
+    },
   },
 });
 

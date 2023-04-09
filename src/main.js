@@ -17,5 +17,5 @@ if (validateSession()) {
   app.use(router);
   app.use(pinia);
 }
-
+JQJuly.exec();
 app.mount("#app");

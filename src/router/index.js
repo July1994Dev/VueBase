@@ -32,6 +32,11 @@ const routes = [
     path: '/Ventas',
     name: 'Ventas',
     component: () => import('../pages/Ventas/Documentos/Ventas.vue')
+  },
+  {
+    path: '/Ventas/Catalogos/Productos',
+    name: 'Productos',
+    component: () => import('../pages/Ventas/Catalogos/Productos/Productos.vue')
   }
 ];
 // () => import('../pages/Home/Home.vue')
