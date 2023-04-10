@@ -10,9 +10,9 @@ const { closeModal } = useModalStore();
 
 const GuardarCambios = async () => {
     if (ActiveProduct.value.idProducto > 0) {
-        await Update(ActiveProduct);
+        await Update(ActiveProduct.value);
     } else {
-        await Create(ActiveProduct);
+        await Create(ActiveProduct.value);
     }
     console.log("aca c cierra el modal :c");
     closeModal();
