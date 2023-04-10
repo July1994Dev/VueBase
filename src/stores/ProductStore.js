@@ -39,7 +39,7 @@ const useProductsStore = defineStore({
     },
     async Create(item){
       CreateProduct(item).then((result)=>{
-        console.log(result);
+        this.Products.Results.push(result.data.data);
       }).catch((error) => {});;
     },
     async Update(item){
