@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia';
 import { emptyProduct } from '../../../../models/products';
 import { CatalogoEstatus, CatalogoImpuestos, CatalogoUnidadMedida, CatalogoMetodoCosteo, CatalogoCategoriaProducto, CatalogoLineaNegocio } from '../../../../models/catalogs';
 
-const { ActiveProduct, IsEdit } = storeToRefs(useProductsStore());
+const { ActiveProduct, IsEdit, Products } = storeToRefs(useProductsStore());
 const { Create, Update } = useProductsStore();
 const { closeModal } = useModalStore();
 
@@ -14,7 +14,6 @@ const GuardarCambios = async () => {
     } else {
         await Create(ActiveProduct.value);
     }
-    console.log("aca c cierra el modal :c");
     closeModal();
 };
 </script>
