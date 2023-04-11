@@ -37,16 +37,29 @@ const useProductsStore = defineStore({
         })
         .catch((error) => {});
     },
-    async Create(item){
-      CreateProduct(item).then((result)=>{
-        this.Products.Results.push(result.data.data);
-      }).catch((error) => {});;
+    async Create(item) {
+      CreateProduct(item)
+        .then((result) => {
+          this.Products.Results.push(result.data.data);
+        })
+        .catch((error) => {});
     },
-    async Update(item){
-      UpdateProduct(item).then((result)=>{
-        this.Products.Results.filter(x=>x.IdProducto == result.data.data.IdProducto)[0] = result.data.data;
-      }).catch((error) => {});;
-    }
+    async Update(item) {
+      UpdateProduct(item)
+        .then((result) => {
+          let product = this.Products.Results.filter(
+            (x) => x.idProducto == result.data.data.idProducto
+          )[0];
+          product.codigo = result.data.data.codigo;
+          product.descripcion = result.data.data.descripcion;
+          product.idProducto = result.data.data.idProducto;
+          product.margenGanancia = result.data.data.margenGanancia;
+          product.precio = result.data.data.precio;
+
+          console.log(this.Products.Results);
+        })
+        .catch((error) => {});
+    },
   },
 });
 
