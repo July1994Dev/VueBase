@@ -24,7 +24,7 @@ export default {
     setup(props) {
         const { GetAllProducts } = useProductsStore();
         const { Products, IsEdit, ActiveProduct } = storeToRefs(useProductsStore());
-        const {showModal} = useModalStore();
+        const { showModal } = useModalStore();
 
         const columnDefs = [
             { headerName: "Id", field: "idProducto" },
@@ -43,7 +43,7 @@ export default {
         const AddItem = () => {
             let toModal = markRaw(EditProduct);
             IsEdit.value = false;
-            ActiveProduct.value = emptyProduct;
+            ActiveProduct.value = { ...emptyProduct };
             showModal(toModal);
         };
 
@@ -72,7 +72,8 @@ export default {
         </template>
         <template v-slot:Controls>
             <div class="page-title-actions">
-                <button @click="AddItem" type="button" data-toggle="tooltip" title="" data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
+                <button @click="AddItem" type="button" data-toggle="tooltip" title="" data-placement="bottom"
+                    class="btn-shadow mr-3 btn btn-dark">
                     <i class="fa fa-plus"></i>
                     Agregar producto
                 </button>
@@ -99,4 +100,5 @@ export default {
                 </div>
             </CardBodyComponent>
         </template>
-    </CardComponent></template>
+    </CardComponent>
+</template>

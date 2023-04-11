@@ -44,7 +44,7 @@ const useProductsStore = defineStore({
     },
     async Update(item){
       UpdateProduct(item).then((result)=>{
-        console.log(result);
+        this.Products.Results.filter(x=>x.IdProducto == result.data.data.IdProducto)[0] = result.data.data;
       }).catch((error) => {});;
     }
   },
