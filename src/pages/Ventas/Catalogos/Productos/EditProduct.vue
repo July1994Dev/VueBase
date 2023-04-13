@@ -3,6 +3,7 @@ import { useProductsStore, useModalStore } from '../../../../stores';
 import { storeToRefs } from 'pinia';
 import { emptyProduct } from '../../../../models/products';
 import { CatalogoEstatus, CatalogoImpuestos, CatalogoUnidadMedida, CatalogoMetodoCosteo, CatalogoCategoriaProducto, CatalogoLineaNegocio } from '../../../../models/catalogs';
+import { columnApi, gridApi } from '../../../../utils/TableConfig.js';
 
 const { ActiveProduct, IsEdit, Products } = storeToRefs(useProductsStore());
 const { Create, Update } = useProductsStore();
@@ -14,6 +15,11 @@ const GuardarCambios = async () => {
     } else {
         await Create(ActiveProduct.value);
     }
+    var params = {
+        force: true,
+        suppressFlash: true,
+      };
+    gridApi.value.refreshCells(params);
     closeModal();
 };
 </script>
@@ -31,7 +37,8 @@ const GuardarCambios = async () => {
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <label>Codigo</label>
-                    <input v-model="ActiveProduct.codigo" type="text" class="form-control">
+                    <input v-if="IsEdit" disabled v-bind:value="ActiveProduct.codigo" type="text" class="form-control disabled">
+                    <input v-else v-model="ActiveProduct.codigo" type="text" class="form-control">
                 </div>
             </div>
             <div class="row mt-0 mt-md-3">

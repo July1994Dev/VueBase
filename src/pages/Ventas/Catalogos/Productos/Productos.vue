@@ -1,6 +1,6 @@
 <script>
 import ContentHeader from '../../../../components/Header/ContentHeader.vue';
-import { onMounted, markRaw } from 'vue';
+import { onMounted, markRaw, ref } from 'vue';
 import { defaultColDef, gridOptions } from '../../../../utils/TableConfig.js';
 import { CardComponent, CardHeaderComponent, CardBodyComponent } from '../../../../components/UI/Card';
 import { AgGridVue } from "ag-grid-vue3";
@@ -10,6 +10,8 @@ import ActionButtons from './ActionButtons.vue';
 import EditProduct from './EditProduct.vue';
 import ModalComponent from '../../../../components/UI/Modal/ModalComponent.vue';
 import { emptyProduct } from '../../../../models/products';
+import { gridApi } from '../../../../utils/TableConfig.js';
+import Swal from 'sweetalert2';
 export default {
     components: {
         ActionButtons,
@@ -22,7 +24,7 @@ export default {
         ModalComponent
     },
     setup(props) {
-        const { GetAllProducts } = useProductsStore();
+        const { GetAllProducts, GetNewCode } = useProductsStore();
         const { Products, IsEdit, ActiveProduct } = storeToRefs(useProductsStore());
         const { showModal } = useModalStore();
 
@@ -40,20 +42,25 @@ export default {
             }
         ];
 
-        const AddItem = () => {
+        const AddItem = async () => {
             let toModal = markRaw(EditProduct);
             IsEdit.value = false;
+            await GetNewCode();
             ActiveProduct.value = { ...emptyProduct };
+
             showModal(toModal);
         };
 
+        const onGridReady = (params) => {
+            gridApi.value = params.api;
+        };
 
         onMounted(() => {
             GetAllProducts();
         });
 
         return {
-            Products, columnDefs, defaultColDef, gridOptions, IsEdit, AddItem
+            Products, columnDefs, defaultColDef, gridOptions, IsEdit, AddItem, onGridReady
         };
     },
 }
@@ -94,7 +101,7 @@ export default {
                 <div class="row p-3">
                     <div class="col">
                         <ag-grid-vue class="ag-theme-alpine" :rowData="Products.Results" :columnDefs="columnDefs"
-                            :defaultColDef="defaultColDef" :gridOptions="gridOptions">
+                            :defaultColDef="defaultColDef" :gridOptions="gridOptions" @grid-ready="onGridReady" ref="agGrid">
                         </ag-grid-vue>
                     </div>
                 </div>

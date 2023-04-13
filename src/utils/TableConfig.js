@@ -7,7 +7,10 @@ const defaultColDef = {
 };
 
 const gridOptions = {
-  domLayout: "autoHeight"
+  domLayout: "autoHeight",
 };
 
-export { defaultColDef, gridOptions };
+var columnApi = {value:null};
+var gridApi = {value:null};
+
+export { defaultColDef, gridOptions, columnApi, gridApi };
