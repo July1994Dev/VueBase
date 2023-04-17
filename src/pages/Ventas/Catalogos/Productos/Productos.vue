@@ -31,8 +31,6 @@ export default {
         const columnDefs = [
             { headerName: "Codigo", field: "codigo" },
             { headerName: "Descripcion", field: "descripcion" },
-            { headerName: "Costo", field: "costo" },
-            { headerName: "Margen de ganancia", field: "margenGanancia" },
             { headerName: "Precio", field: "precio" },
             {
                 headerName: 'Acciones',

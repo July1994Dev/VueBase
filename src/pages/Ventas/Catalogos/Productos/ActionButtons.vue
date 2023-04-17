@@ -41,7 +41,7 @@ const setEdit = async () => {
 
 <template>
     <div class="text-center">
-        <button class="btn btn-info text-light mr-3" v-on:click="setEdit"><span class="fa fa-edit"></span></button>
-        <button class="btn btn-danger text-light" @click="DeleteItem"><span class="fa fa-trash"></span></button>
+        <button class="btn btn-info text-light mr-3" v-on:click="setEdit"><span class="fa fa-edit"></span> Editar</button>
+        <!-- <button class="btn btn-danger text-light" @click="DeleteItem"><span class="fa fa-trash"></span></button> -->
     </div>
 </template>

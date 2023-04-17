@@ -20,6 +20,7 @@ const GuardarCambios = async () => {
         suppressFlash: true,
     };
     IsEdit.value = false;
+    ShowForm.value = false;
     gridApi.value.refreshCells(params);
     closeModal();
 };

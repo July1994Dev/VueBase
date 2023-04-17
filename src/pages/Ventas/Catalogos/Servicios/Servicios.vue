@@ -7,7 +7,7 @@ import { AgGridVue } from "ag-grid-vue3";
 import { storeToRefs } from 'pinia';
 import { useServiciosStore, useModalStore } from '../../../../stores';
 import ActionButtons from './ActionButtons.vue';
-import EditProduct from './EditService.vue';
+import EditService from './EditService.vue';
 import ModalComponent from '../../../../components/UI/Modal/ModalComponent.vue';
 import { emptyService } from '../../../../models/services.js';
 import { gridApi } from '../../../../utils/TableConfig.js';
@@ -20,7 +20,7 @@ export default {
         CardComponent,
         CardHeaderComponent,
         CardBodyComponent,
-        EditProduct,
+        EditService,
         ModalComponent
     },
     setup(props) {
@@ -31,8 +31,6 @@ export default {
         const columnDefs = [
             { headerName: "Codigo", field: "codigo" },
             { headerName: "Descripcion", field: "descripcion" },
-            { headerName: "Costo", field: "costo" },
-            { headerName: "Margen de ganancia", field: "margenGanancia" },
             { headerName: "Precio", field: "precio" },
             {
                 headerName: 'Acciones',
@@ -99,7 +97,7 @@ export default {
             <CardBodyComponent>
                 <div class="row p-3">
                     <div class="col" v-show="ShowForm">
-                        <EditProduct></EditProduct>
+                        <EditService></EditService>
                     </div>
                     <div v-show="!ShowForm" class="col">
                         <ag-grid-vue class="ag-theme-alpine" :rowData="Servicios.Results" :columnDefs="columnDefs"
