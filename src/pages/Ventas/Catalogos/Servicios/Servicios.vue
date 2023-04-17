@@ -5,11 +5,11 @@ import { defaultColDef, gridOptions } from '../../../../utils/TableConfig.js';
 import { CardComponent, CardHeaderComponent, CardBodyComponent } from '../../../../components/UI/Card';
 import { AgGridVue } from "ag-grid-vue3";
 import { storeToRefs } from 'pinia';
-import { useProductsStore, useModalStore } from '../../../../stores';
+import { useServiciosStore, useModalStore } from '../../../../stores';
 import ActionButtons from './ActionButtons.vue';
-import EditProduct from './EditProduct.vue';
+import EditProduct from './EditService.vue';
 import ModalComponent from '../../../../components/UI/Modal/ModalComponent.vue';
-import { emptyProduct } from '../../../../models/products';
+import { emptyService } from '../../../../models/services.js';
 import { gridApi } from '../../../../utils/TableConfig.js';
 import Swal from 'sweetalert2';
 export default {
@@ -24,8 +24,8 @@ export default {
         ModalComponent
     },
     setup(props) {
-        const { GetAllProducts, GetNewCode } = useProductsStore();
-        const { Products, IsEdit, ActiveProduct, ShowForm } = storeToRefs(useProductsStore());
+        const { GetAllServicios, GetNewCode } = useServiciosStore();
+        const { Servicios, IsEdit, ActiveServicio, ShowForm } = storeToRefs(useServiciosStore());
         const { showModal } = useModalStore();
 
         const columnDefs = [
@@ -45,9 +45,9 @@ export default {
             let toModal = markRaw(EditProduct);
             IsEdit.value = false;
             await GetNewCode();
-            ActiveProduct.value = { ...emptyProduct };
-            ShowForm.value=true;
+            ActiveServicio.value = { ...emptyService };
             //showModal(toModal);
+            ShowForm.value = true;
         };
 
         const onGridReady = (params) => {
@@ -55,11 +55,11 @@ export default {
         };
 
         onMounted(() => {
-            GetAllProducts();
+            GetAllServicios();
         });
 
         return {
-            Products, columnDefs, defaultColDef, gridOptions, IsEdit, AddItem, onGridReady,ShowForm
+            Servicios, columnDefs, defaultColDef, gridOptions, IsEdit, AddItem, onGridReady, ShowForm
         };
     },
 }
@@ -71,17 +71,17 @@ export default {
             <i class="pe-7s-cash icon-gradient bg-mean-fruit"></i>
         </template>
         <template v-slot:Title>
-            <div v-on:click="EditItem">Productos</div>
+            <div v-on:click="EditItem">Servicios</div>
         </template>
         <template v-slot:Description>
-            En este modulo se pueden visualizar todos los productos registrados en la plataforma.
+            En este modulo se pueden visualizar todos los servicios registrados en la plataforma.
         </template>
         <template v-slot:Controls>
             <div class="page-title-actions" v-if="!ShowForm">
                 <button @click="AddItem" type="button" data-toggle="tooltip" title="" data-placement="bottom"
                     class="btn-shadow mr-3 btn btn-dark">
                     <i class="fa fa-plus"></i>
-                    Agregar producto
+                    Agregar servicio
                 </button>
             </div>
         </template>
@@ -91,7 +91,7 @@ export default {
             <CardHeaderComponent>
                 <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
                     <i class="header-icon lnr-tag icon-gradient bg-happy-itmeo"></i>
-                    <div>Productos</div>
+                    <div>Servicios</div>
                 </div>
             </CardHeaderComponent>
         </template>
@@ -102,7 +102,7 @@ export default {
                         <EditProduct></EditProduct>
                     </div>
                     <div v-show="!ShowForm" class="col">
-                        <ag-grid-vue class="ag-theme-alpine" :rowData="Products.Results" :columnDefs="columnDefs"
+                        <ag-grid-vue class="ag-theme-alpine" :rowData="Servicios.Results" :columnDefs="columnDefs"
                             :defaultColDef="defaultColDef" :gridOptions="gridOptions" @grid-ready="onGridReady" ref="agGrid">
                         </ag-grid-vue>
                     </div>

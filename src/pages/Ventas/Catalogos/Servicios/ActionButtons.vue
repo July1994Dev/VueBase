@@ -1,12 +1,12 @@
 <script setup>
 import { markRaw } from 'vue';
 import { SimpleAlert, ToastAlert } from '../../../../utils/Alerts.js';
-import { useProductsStore, useModalStore } from '../../../../stores';
+import { useServiciosStore, useModalStore } from '../../../../stores';
 import { storeToRefs } from 'pinia';
-import EditProduct from './EditProduct.vue';
+import EditService from './EditService.vue';
 
-const { GetProduct } = useProductsStore();
-const { ActiveProduct, IsEdit, ShowForm } = storeToRefs(useProductsStore());
+const { GetServicio } = useServiciosStore();
+const { ActiveServicio, IsEdit, ShowForm } = storeToRefs(useServiciosStore());
 const props = defineProps({
     params: {}
 });
@@ -30,9 +30,10 @@ const setEdit = async () => {
     let idProducto = params.value;
     if (idProducto) {
         IsEdit.value = true;
-        await GetProduct(idProducto);
+        await GetServicio(idProducto);
         ShowForm.value = true;
-        //let toModal = markRaw(EditProduct);
+        
+        //let toModal = markRaw(EditService);
         //showModal(toModal);
     }
 };

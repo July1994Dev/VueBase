@@ -63,6 +63,12 @@ const listaMenu = [
                         text: "Productos",
                         icon: "pe-7s-plugin",
                         route: "/Ventas/Catalogos/Productos",
+                    },
+                    {
+                        type: "single",
+                        text: "Servicios",
+                        icon: "pe-7s-plugin",
+                        route: "/Ventas/Catalogos/Servicios",
                     }
                 ]
             }

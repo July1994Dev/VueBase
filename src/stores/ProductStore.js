@@ -20,6 +20,7 @@ const useProductsStore = defineStore({
     },
     ActiveProduct: {},
     IsEdit: false,
+    ShowForm: false
   }),
   actions: {
     async GetAllProducts() {
